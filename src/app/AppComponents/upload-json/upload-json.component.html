@@ -1,0 +1,19 @@
+<div id="wrapper">
+    <h1>Upload DataBase File</h1>
+
+    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+
+    <div class="file-upload">
+
+        {{_fileName || "No file uploaded yet."}}
+
+        <button mat-mini-fab color="accent" class="upload-btn" (click)="fileUpload.click()" #tooltip="matTooltip"
+            matTooltip="Upload File Here.....">
+            <mat-icon>attach_file</mat-icon>
+        </button>
+    </div>
+</div>
+<div id="deleteBtn">
+    <button mat-raised-button color="warn" (click)="deleteAllInvoicesRecords()">Delete All Invoices Records</button>
+    <button mat-raised-button color="warn" (click)="deleteAllRecords()">Delete All Data</button>
+</div>

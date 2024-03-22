@@ -1,0 +1,47 @@
+<div class="div-table">
+    <table mat-table [dataSource]="_invoiceTableDataSource" class="mat-elevation-z8 tbl">
+
+        <ng-container matColumnDef="No">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element; let i=index;"> {{i+1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Full Name">
+            <th mat-header-cell *matHeaderCellDef>Full Name</th>
+            <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.middleName}} {{element.lastName}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Invoice Date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element">{{element.date}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Total Amount">
+            <th mat-header-cell *matHeaderCellDef> Total Amount </th>
+            <td mat-cell *matCellDef="let element"> {{element.total|formateAmount}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Edit">
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-flat-button color="accent" (click)="editInvoice(element.invoiceID)">Edit</button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Delete">
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let element;let i=index">
+                <button mat-mini-fab color="warn" (click)="deleteInvoice(element.invoiceID,i)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <!-- <a (click)="deleteInvoice(element.invoiceID,i)">
+                    <mat-icon color="warn">delete</mat-icon>
+                </a> -->
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="_displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; let i=index; columns: _displayedColumns;"></tr>
+    </table>
+</div>

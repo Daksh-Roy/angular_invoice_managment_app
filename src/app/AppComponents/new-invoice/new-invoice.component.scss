@@ -1,0 +1,138 @@
+div {
+    text-align: center;
+
+    h1 {
+        margin-top: 3vh;
+        font-size: 8vh;
+    }
+
+    span {
+        display: block;
+    }
+
+    form {
+        margin: 4vw;
+
+        mat-card {
+            mat-card-content {
+                .input-name {
+                    .mat-30 {
+                        width: 30%;
+                        margin: 0vw 1vw 0vw 1vw;
+
+                        @media screen and (max-width:740px) {
+                            width: 90%;
+                        }
+                    }
+
+                }
+
+                .input-date-payment {
+                    text-align: left;
+                    margin: 0vw 1vw 0vw 1vw;
+
+                    .mat-30 {
+                        width: 30%;
+                        margin: 0vw 1vw 0vw 1vw;
+
+                        @media screen and (max-width:1000px) {
+                            width: 95%;
+                        }
+                    }
+
+                    .radio {
+                        display: inline-block;
+
+                        @media screen and (max-width:740px) {
+                            display: block;
+                            text-align: left;
+
+                            mat-radio-button {
+                                display: block;
+                                justify-content: left;
+                            }
+                        }
+
+                    }
+
+                    //radio buttons
+
+                }
+
+                .addBtn {
+                    display: flex;
+                    justify-content: flex-end;
+
+                    a {
+                        margin-right: 2.5vw;
+
+                        .mat-icon {
+                            font-size: 30px;
+
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .div-table {
+            overflow-x:auto;
+            margin-top: 2vh;
+            .tbl{
+                width: 100%;
+            }
+            @media screen and (max-width:600px) {
+                .tbl thead {
+                    display: none;
+                }
+
+                .tbl,
+                .tbl tbody,
+                .tbl tr,
+                .tbl td {
+                    display: block;
+                    width: 98%;
+                }
+
+                .tbl tr {
+                    margin-bottom: 20px;
+                }
+
+                .tbl td:first-child {
+                    font-size: 30px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+
+                .tbl td {
+                    text-align: center;
+                    padding-left: 5%;
+                    position: relative;
+                }
+
+                .tbl td::before {
+                    text-align: left;
+                    content: attr(data-label);
+                    position: absolute;
+                    left: 15px;
+                    width: 30%;
+                }
+            }
+        }
+    }
+
+    .total {
+        width: 20vw;
+        margin-top: 2%;
+        display: none;
+    }
+
+    .btnDiv {
+        margin: 10px auto 0;
+
+        button {
+            margin: 0 auto;
+        }
+    }
+}

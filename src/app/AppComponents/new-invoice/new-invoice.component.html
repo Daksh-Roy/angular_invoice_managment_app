@@ -1,0 +1,128 @@
+<div>
+    <h1>Invoice</h1>
+    <span>Add new Invoice</span>
+    <form (ngSubmit)="submit()" [formGroup]="_invoiceForm">
+        <mat-card>
+            <mat-card-content>
+                <div class="input-name">
+                    <mat-form-field color="accent" class="mat-30">
+                        <mat-label>First Name</mat-label>
+                        <input matInput type="text" formControlName="firstNameControl"
+                            placeholder="Enter First Name Here...">
+                    </mat-form-field>
+                    <mat-form-field color="accent" class="mat-30">
+                        <mat-label>Middle Name</mat-label>
+                        <input matInput type="text" formControlName="middleNameControl"
+                            placeholder="Enter Middle Name Here...">
+                    </mat-form-field>
+                    <mat-form-field color="accent" class="mat-30">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="text" formControlName="lastNameControl" placeholder="Enter Last Name Here...">
+                    </mat-form-field>
+                </div>
+                
+                <div class="input-date-payment">
+
+                    <mat-form-field color="accent" class="mat-30">
+                        <mat-label>Date</mat-label>
+                        <input matInput type="date" formControlName="dateControl" readonly>
+                    </mat-form-field>
+                    <div class="radio">
+                        <mat-radio-group aria-label="Payment Option : " formControlName="paymentControl" class="mat-50">
+                            <label>Payment Option : </label>
+                            <mat-radio-button value="Credit Card">Credit Card</mat-radio-button>
+                            <mat-radio-button value="UPI">UPI</mat-radio-button>
+                            <mat-radio-button value="Net Banking">Net Banking</mat-radio-button>
+                            <mat-radio-button value="Cash">Cash</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                </div>
+                <div class="addBtn">
+                    <button mat-mini-fab type="button" color="accent" (click)="addRow()" #tooltip="matTooltip"
+                    matTooltip="Click To Add Product...">
+                        <mat-icon class="mat-icon">add</mat-icon>
+                    </button>
+                    <!-- <a (click)="addRow()"><mat-icon color="accent" class="mat-icon">add</mat-icon></a> -->
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+        <div class="div-table">
+            <table class="tbl">
+                <thead [hidden]="_hideTableHeader">
+                    <tr class="text-uppercase table-dark">
+                        <th scope="col">No</th>
+                        <th scope="col">Product Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody [formGroup]="_invoiceTable">
+                    <ng-container formArrayName="products" *ngFor="let group of table.controls; let i=index">
+                        <tr [formGroupName]="i">
+                            <td scope="row" class="align-middle">
+                                {{i+1}}
+                            </td>
+                            <td>
+                                <mat-form-field color="accent">
+                                    <mat-label>Product Code</mat-label>
+                                    <mat-select #productCode
+                                        (selectionChange)="changeProductCode(productCode.value,i)"
+                                        formControlName="productCode">
+                                        <mat-option *ngFor="let pc of _allPRoducts"
+                                            [value]="pc" [disabled]="!_availableProduct.includes(pc)">{{pc}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field color="accent" appearance="outline">
+                                    <input matInput type="text" formControlName="description"
+                                        placeholder="description" readonly>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field color="accent">
+                                    <input #quantity matInput type="number" formControlName="quantity"
+                                        placeholder="Enter quantity" (ngModelChange)="changeQuantity(quantity.value,i)"
+                                        
+                                        onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+                                        
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field color="accent">
+                                    <input #rate matInput type="number" formControlName="rate" (ngModelChange)="changeRate(rate.value,i)">
+                                </mat-form-field>
+
+                            </td>
+                            <td>
+                                <mat-form-field color="accent" appearance="outline">
+                                    <input matInput type="number" class="form-control" formControlName="amount" readonly>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <a (click)="deleteRow(i)">
+                                    <mat-icon color="warn">delete</mat-icon>
+                                </a>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+        <h2>Total Bill Amount : {{_totalAmount|formateAmount}}</h2>
+        <mat-form-field color="accent" class="total" appearance="outline">
+            <mat-label>Total Amount</mat-label>
+            <input matInput type="number" formControlName="totalAmountControl" readonly>
+        </mat-form-field>
+        <div class="btnDiv">
+            <button mat-raised-button color="accent" type="submit">submit</button>
+        </div>
+    </form>
+</div>
+
+<!-- https://github.com/voidChetan/AngularLogicalTopics/tree/main/src/app/pages/inline-editing-reactive-form -->

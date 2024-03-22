@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Update Product</h1>
+<div mat-dialog-content>
+
+    <form [formGroup]="_productUpdateForm"> <!--(ngSubmit)="addProduct()"-->
+        <mat-form-field color="accent" class="hide">
+            <mat-label>Product Id</mat-label>
+            <input matInput type="number" formControlName="productId" readonly>
+        </mat-form-field>
+        <mat-form-field color="accent">
+            <mat-label>Product Code</mat-label>
+            <input matInput type="number" formControlName="productCodeControl" readonly>
+        </mat-form-field>
+        <mat-form-field color="accent">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="descriptionControl" placeholder="Enter Product Description Here...">
+        </mat-form-field>
+        <mat-form-field color="accent" class="mat-50">
+            <mat-label>Rate</mat-label>
+            <input matInput type="number" formControlName="rateControl" placeholder="Enter Rate Here..." 
+            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+        </mat-form-field>
+        <mat-form-field color="accent" class="mat-50">
+            <mat-label>Minimum Rate</mat-label>
+            <input matInput type="number" formControlName="minimumRateControl" placeholder="Enter Minimum Rate Here..."
+            onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+        </mat-form-field>
+
+        <mat-slide-toggle name="Lock" formControlName="lockControl" class="slide-btn">Lock</mat-slide-toggle>
+
+    </form>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="warn" mat-dialog-close>Cancle</button>
+    <button mat-raised-button color="accent" (click)="updateProduct()">Update</button>
+</div>

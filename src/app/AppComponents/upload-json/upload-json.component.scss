@@ -1,0 +1,16 @@
+#wrapper{
+    border: 2px dashed white;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10vh;
+    margin: 20vh 20vw;
+    .file-input {
+        display: none;
+    }
+}
+#deleteBtn{
+    text-align: center;
+    button{
+        margin: 0% 1%;
+    }
+}

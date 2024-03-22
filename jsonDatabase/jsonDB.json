@@ -1,0 +1,141 @@
+{
+  "invoices": [
+        {
+            "invoiceID":"inv1",
+            "firstName": "prince",
+            "middleName": "rajeshbhai",
+            "lastName": "iyer",
+            "date": "2024-03-04",
+            "paymentMethod": "Credit Card",
+            "products": [
+                {
+                    "productCode": 101,
+                    "quantity": 2,
+                    "rate": 190000,
+                    "amount": 380000
+                },
+                {
+                    "productCode": 102,
+                    "quantity": 1,
+                    "rate": 90000,
+                    "amount": 90000
+                },
+                {
+                    "productCode": 103,
+                    "quantity": 3,
+                    "rate": 380000,
+                    "amount": 1140000
+                }
+            ],
+            "total": 1610000
+        },
+        {
+            "invoiceID":"inv2",
+            "firstName": "raj",
+            "middleName": "ashokbhai",
+            "lastName": "tavde",
+            "date": "2024-01-31",
+            "paymentMethod": "UPI",
+            "products": [
+                {
+                    "productCode": 104,
+                    "quantity": 2,
+                    "rate": 750000,
+                    "amount": 1500000
+                },
+                {
+                    "productCode": 106,
+                    "quantity": 1,
+                    "rate": 1150000,
+                    "amount": 1150000
+                },
+                {
+                    "productCode": 102,
+                    "quantity": 2,
+                    "rate": 100000,
+                    "amount": 200000
+                }
+            ],
+            "total": 2850000
+        },
+        {
+            "invoiceID":"inv3",
+            "firstName": "utsav",
+            "middleName": "kanubhai",
+            "lastName": "dave",
+            "date": "2024-02-08",
+            "paymentMethod": "Cash",
+            "products": [
+                {
+                    "productCode": 105,
+                    "quantity": 2,
+                    "rate": 1400000,
+                    "amount": 2800000
+                },
+                {
+                    "productCode": 103,
+                    "quantity": 1,
+                    "rate": 400000,
+                    "amount": 400000
+                },
+                {
+                    "productCode": 101,
+                    "quantity": 3,
+                    "rate": 200000,
+                    "amount": 600000
+                }
+            ],
+            "total": 3800000
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "productCode": 101,
+            "description": "car",
+            "rate": 200000,
+            "minimumRate":180000,
+            "lock":false
+        },
+        {
+            "id": 2,
+            "productCode": 102,
+            "description": "bike",
+            "rate": 100000,
+            "minimumRate":80000,
+            "lock":true
+        },
+        {
+            "id": 3,
+            "productCode": 103,
+            "description": "riksha",
+            "rate": 400000,
+            "minimumRate":370000,
+            "lock":false
+        },
+        {
+            "id": 4,
+            "productCode": 104,
+            "description": "truck",
+            "rate": 800000,
+            "minimumRate":720000,
+            "lock":false
+        },
+        {
+            "id": 5,
+            "productCode": 105,
+            "description": "air-plane",
+            "rate": 1500000,
+            "minimumRate":1250000,
+            "lock":true
+        },
+        {
+            "id": 6,
+            "productCode": 106,
+            "description": "bus",
+            "rate": 1200000,
+            "minimumRate":1140000,
+            "lock":false
+        }
+    ]
+}

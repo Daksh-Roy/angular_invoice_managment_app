@@ -1,0 +1,23 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <mat-icon (click)="openMenu()" *ngIf="!_sideNavFlag">menu</mat-icon>
+        <mat-icon (click)="openMenu()" *ngIf="_sideNavFlag">cancel</mat-icon>
+        <h1>Invoice System</h1>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav [opened]="_sideNavFlag" mode="side">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/home">Home</a>
+            <a mat-list-item routerLink="/addProduct">Add Product</a>
+            <a mat-list-item routerLink="/invoiceList">All Invoices</a>
+            <a mat-list-item routerLink="/newInvoice">New Invoice</a>
+            <a mat-list-item routerLink="/uploadJson">Upload Json</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="min-height: 91vh;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
